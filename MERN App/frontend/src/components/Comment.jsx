@@ -5,6 +5,7 @@ import UserImage from './UserImage';
 import FlexBetween from './FlexBetween';
 import { setPost } from '../state/index.js';
 import DeleteIcon from '@mui/icons-material/Delete';
+import 'dotenv/config';
 
 const Comment = ({ userId, comment, postId }) => {
   const token = useSelector((state) => state.token);
@@ -15,7 +16,7 @@ const Comment = ({ userId, comment, postId }) => {
   const main = palette.neutral.main;
 
   const getCommentUser = async () => {
-    const response = await fetch(`http://localhost:3001/users/${userId}`, {
+    const response = await fetch(`${process.env.API_URL}/users/${userId}`, {
       method: 'GET',
       headers: { Authorization: `Bearer ${token}` },
     });
@@ -25,7 +26,7 @@ const Comment = ({ userId, comment, postId }) => {
 
   const handleDeleteComment = async () => {
     const response = await fetch(
-      `http://localhost:3001/posts/${postId}/${userId}/comment/delete`,
+      `${process.env.API_URL}/posts/${postId}/${userId}/comment/delete`,
       {
         method: 'PATCH',
         headers: {
