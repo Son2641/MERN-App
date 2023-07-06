@@ -7,7 +7,6 @@ import FriendListWidget from '../widgets/FriendListWidget';
 import MyPostWidget from '../widgets/MyPostWidget';
 import PostsWidget from '../widgets/PostsWidget';
 import UserWidget from '../widgets/UserWidget';
-import 'dotenv/config';
 
 const ProfilePage = () => {
   const [user, setUser] = useState(null);
