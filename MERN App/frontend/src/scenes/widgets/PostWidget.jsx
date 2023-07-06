@@ -22,7 +22,6 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setPost } from '../../state/index.js';
 import Comment from '../../components/Comment';
-import 'dotenv/config';
 
 const PostWidget = ({
   postId,
@@ -51,7 +50,7 @@ const PostWidget = ({
 
   const patchLike = async () => {
     const response = await fetch(
-      `${process.env.API_URL}/posts/${postId}/like`,
+      `https://connectson-api.onrender.com/posts/${postId}/like`,
       {
         method: 'PATCH',
         headers: {
@@ -67,7 +66,7 @@ const PostWidget = ({
 
   const handleComment = async () => {
     const response = await fetch(
-      `${process.env.API_URL}/${postId}/${loggedInUserId}/comment`,
+      `https://connectson-api.onrender.com/${postId}/${loggedInUserId}/comment`,
       {
         method: 'POST',
         headers: {
@@ -83,14 +82,17 @@ const PostWidget = ({
   };
 
   const handleDeletePost = async () => {
-    const response = await fetch(`${process.env.API_URL}/posts/${postId}`, {
-      method: 'DELETE',
-      headers: {
-        Authorization: `Bearer ${token}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ userId: loggedInUserId }),
-    });
+    const response = await fetch(
+      `https://connectson-api.onrender.com/posts/${postId}`,
+      {
+        method: 'DELETE',
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ userId: loggedInUserId }),
+      }
+    );
 
     if (response.ok) {
       setIsPostDeleted(true);
@@ -137,7 +139,7 @@ const PostWidget = ({
               height='auto'
               alt='post'
               style={{ borderRadius: '0.75rem', marginTop: '0.75rem' }}
-              src={`${process.env.API_URL}/assets/${picturePath}`}
+              src={`${picturePath}`}
             />
           )}
           <FlexBetween mt='0.25rem'>

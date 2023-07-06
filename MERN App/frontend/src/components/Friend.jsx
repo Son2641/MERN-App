@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom';
 import { setFriends } from '../state/index.js';
 import FlexBetween from './FlexBetween';
 import UserImage from './UserImage';
-import 'dotenv/config';
 
 const Friend = ({ friendId, name, subtitle, userPicturePath }) => {
   const dispatch = useDispatch();
@@ -24,7 +23,7 @@ const Friend = ({ friendId, name, subtitle, userPicturePath }) => {
 
   const patchFriend = async () => {
     const response = await fetch(
-      `${process.env.API_URL}/users/${_id}/${friendId}`,
+      `https://connectson-api.onrender.com/users/${_id}/${friendId}`,
       {
         method: 'PATCH',
         headers: {

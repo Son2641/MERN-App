@@ -4,7 +4,6 @@ import WidgetWrapper from '../../components/WidgetWrapper.jsx';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setFriends } from '../../state/index.js';
-import 'dotenv/config';
 
 const FriendListWidget = ({ userId }) => {
   const dispatch = useDispatch();
@@ -13,10 +12,13 @@ const FriendListWidget = ({ userId }) => {
   const friends = useSelector((state) => state.user.friends);
 
   const getFriends = async () => {
-    const response = await fetch(`${process.env.API_URL}/${userId}/friends`, {
-      method: 'GET',
-      headers: { Authorization: `Bearer ${token}` },
-    });
+    const response = await fetch(
+      `https://connectson-api.onrender.com/${userId}/friends`,
+      {
+        method: 'GET',
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    );
     const data = await response.json();
     dispatch(setFriends({ friends: data }));
   };

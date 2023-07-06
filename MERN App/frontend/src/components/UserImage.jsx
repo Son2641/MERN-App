@@ -1,5 +1,4 @@
 import { Box } from '@mui/material';
-import 'dotenv/config';
 
 const UserImage = ({ image, size = '60px' }) => {
   return (
@@ -10,7 +9,7 @@ const UserImage = ({ image, size = '60px' }) => {
           width={size}
           height={size}
           alt='user'
-          src={`${process.env.API_URL}/assets/${image}`}
+          src={`${image}`}
         />
       </Box>
     </>
