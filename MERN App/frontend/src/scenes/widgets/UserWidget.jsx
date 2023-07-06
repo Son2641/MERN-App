@@ -36,13 +36,11 @@ const UserWidget = ({ userId, picturePath }) => {
 
   useEffect(() => {
     getUser();
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, []);
 
   if (!user) {
     return null;
   }
-
-  // const fullName = `${user.firstName} ${user.lastName}`;
 
   const {
     firstName,
