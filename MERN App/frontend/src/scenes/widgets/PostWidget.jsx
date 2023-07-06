@@ -66,7 +66,7 @@ const PostWidget = ({
 
   const handleComment = async () => {
     const response = await fetch(
-      `https://connectson-api.onrender.com/${postId}/${loggedInUserId}/comment`,
+      `https://connectson-api.onrender.com/posts/${postId}/${loggedInUserId}/comment`,
       {
         method: 'POST',
         headers: {
