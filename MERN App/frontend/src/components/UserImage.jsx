@@ -9,7 +9,7 @@ const UserImage = ({ image, size = '60px' }) => {
           width={size}
           height={size}
           alt='user'
-          src={`https://connectson-api.onrender.com/${image}`}
+          src={`https://connectson-api.onrender.com/assets/${image}`}
         />
       </Box>
     </>
